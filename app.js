@@ -12,10 +12,15 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.json());
 app.use(userRouter);
 
-const login = fs.readFileSync(__dirname + "/public/login.html", "utf-8")
+const login = fs.readFileSync(__dirname + "/public/login.html", "utf-8");
+const create = fs.readFileSync(__dirname + "/public/create.html", "utf-8");
 
 app.get("/login", (req, res) => {
     res.send(login);
+});
+
+app.get("/create", (req, res) => {
+    res.send(create);
 });
 
 app.listen(port, (error) => {

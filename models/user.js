@@ -80,6 +80,25 @@ userSchema.pre("save", async function (next) {
     next();
 });
 
+// STATICS
+
+// Find user by email and use Bcrypt to compare password to see if it match
+userSchema.statics.findByCredentials = async (email, password) => {
+    const user = await User.findOne({email: email});
+
+    if (!user) {
+        throw new Error("Unable to login");
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if(!isMatch){
+        throw new Error("Unable to login - Password or username is wrong");
+    }
+    
+    return user;
+};
+
 const User = mongoose.model("User", userSchema); 
 
 module.exports = User; 
