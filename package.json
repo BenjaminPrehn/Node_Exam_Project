@@ -1,0 +1,23 @@
+{
+  "name": "node_exam_project",
+  "version": "1.0.0",
+  "description": "Node Exam Project for Node.Js Course 2021 Spring",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenjaminPrehn/Node_Exam_Project.git"
+  },
+  "author": "Benjamin Prehn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BenjaminPrehn/Node_Exam_Project/issues"
+  },
+  "homepage": "https://github.com/BenjaminPrehn/Node_Exam_Project#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
