@@ -43,6 +43,12 @@ const userSchema = new mongoose.Schema({
     timestamps: true
 });
 
+userSchema.virtual('projects', {
+    ref: 'Projects',
+    localField: '_id',
+    foreignField: 'owner'
+})
+
 // METHODS
 
 // When creating a getting a user, remove X from json string
@@ -59,9 +65,9 @@ userSchema.methods.toJSON = function () {
 // Generate a Token for each user session and save to mongoDB
 userSchema.methods.generateAuthToken = async function () {
     const user = this;
-    const token = jwt.sign({ _id: user._id.toString() }, 'examprojecttoken');
+    const token = jwt.sign({ _id: user._id.toString() }, "examprojecttoken");
 
-    user.token = user.tokens.concat({ token: token});
+    user.tokens = user.tokens.concat({ token: token});
     await user.save();
 
     return token
@@ -95,7 +101,7 @@ userSchema.statics.findByCredentials = async (email, password) => {
     if(!isMatch){
         throw new Error("Unable to login - Password or username is wrong");
     }
-    
+
     return user;
 };
 
