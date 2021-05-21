@@ -6,7 +6,7 @@ button.addEventListener('click', async _ => {
       method: 'post'
     });
 
-    // location.reload();
+    location.reload();
     console.log('Completed!', response);
   } catch(err) {
     alert("Error occured when login out - Please try again")
