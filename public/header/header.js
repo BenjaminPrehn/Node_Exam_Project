@@ -1,6 +1,6 @@
-const button = document.getElementById('post-logout');
+const logoutButton = document.getElementById('post-logout');
 
-button.addEventListener('click', async _ => {
+logoutButton.addEventListener('click', async _ => {
   try {  
     const response = await fetch('/users/logout', {
       method: 'post'

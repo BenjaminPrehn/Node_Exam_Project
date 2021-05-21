@@ -51,4 +51,9 @@ router.post("/users/logout", authentication, async (req, res) => {
     }
 });
 
+// Get user profile
+router.get("/users/me", authentication, (req, res) => {
+    res.send(req.user);
+});
+
 module.exports = router;

@@ -21,7 +21,7 @@ router.post("/projects", authentication, async (req, res) => {
 });
 
 // Get all projects  
-router.get("/projects", authentication, async (req, res) => {
+router.get("/projects/all", authentication, async (req, res) => {
     try{
         // const projects = await Projects.find({ });
         // res.send(projects)
