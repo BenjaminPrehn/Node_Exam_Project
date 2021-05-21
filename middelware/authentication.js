@@ -1,5 +1,8 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
+const fs = require('fs');
+
+const login = fs.readFileSync(__dirname + "/../public/login.html", "utf-8");
 
 const authentication = async (req, res, next) => {
     try {
@@ -16,7 +19,7 @@ const authentication = async (req, res, next) => {
         next();
 
     } catch (error) {
-        res.status(401).send({error: "You are not logged in - Please authenticate"})
+        res.redirect("/login");
     }
 }
 

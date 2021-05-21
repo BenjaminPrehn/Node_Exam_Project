@@ -1,14 +1,9 @@
 const express = require('express');
 const router = new express.Router();
 const authentication = require('../middelware/authentication.js');
-const fs = require('fs');
-const session = require('express-session')
 
 const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }));
-
-const home = fs.readFileSync(__dirname + "/../public/home/home.html", "utf-8");
-const login = fs.readFileSync(__dirname + "/../public/login.html", "utf-8");
 
 const User = require('../models/user');
 
@@ -33,9 +28,26 @@ router.post("/users/login", async (req, res) => {
         const user = await User.findByCredentials(req.body.email, req.body.password);
         const token = await user.generateAuthToken();
         res.cookie("auth_token", token);
-        res.redirect("/home");
+        res.redirect("/");
     } catch (error) {
         res.status(400).send();
+    }
+});
+
+// Logout a user
+router.post("/users/logout", authentication, async (req, res) => {
+    try {
+        req.user.tokens = req.user.tokens.filter((token) => {
+            return token.token !== req.token;
+        });
+
+        await req.user.save();
+
+        res.clearCookie("auth_token");
+        res.redirect("/login");
+
+    } catch (error) {
+        res.status(500).send();
     }
 });
 
