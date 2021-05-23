@@ -1,22 +1,6 @@
-const logoutButton = document.getElementById('post-logout');
-
-logoutButton.addEventListener('click', async _ => {
-  try {  
-    const response = await fetch('/users/logout', {
-      method: 'post'
-    });
-
-    location.reload();
-    console.log('Completed!', response);
-  } catch(err) {
-    alert("Error occured when login out - Please try again")
-    console.error(`Error: ${err}`);
-  }
-});
-
 (async function getProfile() {
     try {
-        $.ajax({
+        await $.ajax({
             method: "GET",
             url: '/users/me',
             dataType: 'json'
@@ -25,8 +9,25 @@ logoutButton.addEventListener('click', async _ => {
         });
 
     } catch (error) {
+        alert("Error occured when login out - Please try again");
         console.log(error);
     }
 
 })();
+
+function logout() {
+    try {
+        $.ajax({
+            method: "POST",
+            url: "/users/logout",
+            dataType: "json"
+        }).done(
+            location.reload()
+        );
+
+    } catch (error) {
+        alert("Error occured when login out - Please try again");
+        console.log(error);
+    }
+}
 

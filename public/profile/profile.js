@@ -23,9 +23,11 @@ function logoutAll() {
             method: "POST",
             url: "/users/logoutAllSessions",
             dataType: "json"
-        })
+        }).done(
+            location.reload()
+        );
 
-        location.reload();
+        
     } catch (error) {
         alert("Error occured when login out - Please try again");
         console.log(error);
@@ -38,9 +40,9 @@ function deleteUser() {
             method: "DELETE",
             url: "/users/me",
             dataType: "json"
-        })
-
-        location.reload();
+        }).done(
+            location.reload()
+        );
 
     } catch (error) {
         alert("Error occured when deleting user - Please try again");
