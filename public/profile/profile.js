@@ -1,13 +1,14 @@
 (async function getProfile() {
     try {
-        $.ajax({
+       await $.ajax({
             method: "GET",
-            url: '/users/me',
-            dataType: 'json'
+            url: "/users/me",
+            dataType: "json"
         }).done(function(user) {
-                $('<div>').appendTo("#getProfile")
-                    .append($("<h1></h1>").text(user.firstname))
-                    .append($("<h3></h3>").text(user.email));
+            
+            $("#name").text(user.firstname + " " + user.lastname);
+            $("#email").text(user.email);
+                
         });
 
     } catch (error) {
@@ -15,3 +16,34 @@
     }
 
 })();
+
+function logoutAll() {
+    try {
+        $.ajax({
+            method: "POST",
+            url: "/users/logoutAllSessions",
+            dataType: "json"
+        })
+
+        location.reload();
+    } catch (error) {
+        alert("Error occured when login out - Please try again");
+        console.log(error);
+    }
+};
+
+function deleteUser() {
+    try {
+        $.ajax({
+            method: "DELETE",
+            url: "/users/me",
+            dataType: "json"
+        })
+
+        location.reload();
+
+    } catch (error) {
+        alert("Error occured when deleting user - Please try again");
+        console.log(error);
+    }
+};

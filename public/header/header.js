@@ -13,3 +13,20 @@ logoutButton.addEventListener('click', async _ => {
     console.error(`Error: ${err}`);
   }
 });
+
+(async function getProfile() {
+    try {
+        $.ajax({
+            method: "GET",
+            url: '/users/me',
+            dataType: 'json'
+        }).done(function(user) {
+            $("#profileName").text(" " + user.firstname + " " + user.lastname);
+        });
+
+    } catch (error) {
+        console.log(error);
+    }
+
+})();
+

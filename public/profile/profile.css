@@ -1,0 +1,21 @@
+.mainView {
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+img {
+    border-radius: 50%;
+    width: 30%;
+  }
+
+  hr {
+      border-color: black;
+      width: 80%
+  }
+
+  button {
+      width: 30%;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+  }

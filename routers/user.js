@@ -34,6 +34,11 @@ router.post("/users/login", async (req, res) => {
     }
 });
 
+// Get user profile
+router.get("/users/me", authentication, (req, res) => {
+    res.send(req.user);
+});
+
 // Logout a user
 router.post("/users/logout", authentication, async (req, res) => {
     try {
@@ -51,9 +56,30 @@ router.post("/users/logout", authentication, async (req, res) => {
     }
 });
 
-// Get user profile
-router.get("/users/me", authentication, (req, res) => {
-    res.send(req.user);
+// Logout all user sessions
+router.post("/users/logoutAllSessions", authentication, async (req, res) => {
+    try {
+        req.user.tokens = [];
+        await req.user.save();
+        res.clearCookie("auth_token");
+        res.redirect("/login");
+    } catch (error) {
+        res.status(500).send();
+    }
+    
+});
+
+// Delete an account from the database - !!! NOTE redirect not working - but rest is working
+router.delete("/users/me", authentication, async (req, res) => {
+    try {
+        await req.user.remove();
+
+        res.clearCookie("auth_token");
+        res.send("/login");
+
+    } catch (e) {
+        res.status(500).send();
+    }
 });
 
 module.exports = router;
