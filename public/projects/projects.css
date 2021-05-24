@@ -3,6 +3,10 @@
     text-align: center;
 }
 
+h5 {
+    text-align: center;
+}
+
 .projects-table {
     margin: 0 auto;
     padding: 20px;
@@ -12,31 +16,3 @@ span {
     margin: 4px;
 }
 
-.create-project-form {
-    width: 300px;
-    margin: 0 auto;
-    font-family: Tahoma, Geneva, sans-serif;
-    padding: 10px;
-}
-
-#toggle-form{
-    width: 20%;
-    padding: 15px;
-    background-color: #1a3754;
-    border: 0;
-    box-sizing: border-box;
-    cursor: pointer;
-    font-weight: bold;
-    color: #ffffff;
-}
-
-#submit-form{
-    width: 100%;
-    padding: 15px;
-    background-color: #1a3754;
-    border: 0;
-    box-sizing: border-box;
-    cursor: pointer;
-    font-weight: bold;
-    color: #ffffff;
-}

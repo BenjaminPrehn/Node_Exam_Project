@@ -1,13 +1,5 @@
 <div class="projects">
     
-    <!-- <button id="toggle-form">Create new project</button>
-    <form action="/projects" method="POST" class="create-project-form">
-        <input type="text" name="description" placeholder="Description" required>
-        <input type="text" name="completed" placeholder="Completed" >
-        <button type="submit" id="submit-form">Create project</button>
-    </form> -->
-
-<!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createProjectModal">
     Create Project
   </button>
@@ -16,23 +8,22 @@
   <div class="modal fade" id="createProjectModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Create project</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-header d-block">
+          <h5 class="modal-title text-center" id="exampleModalLabel">Create project</h5>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
         </div>
         <div class="modal-body">
             <form action="/projects" method="POST">
                 <div class="mb-3">
                   <label for="description" class="form-label">Description</label>
-                  <input type="text" class="form-control" id="description" name="description">
+                  <input type="text" class="form-control" id="description" name="description" required>
                 </div>
                 <div class="mb-3">
-                    <select class="form-select" aria-label="Default select example" name="completed">
-                        <option selected value="false">false</option>
-                        <option value="true">true</option>
+                    <label for="completed" class="form-label">Completed?</label>
+                    <select class="form-select" aria-label="completed" name="completed">
+                        <option selected value="false">No</option>
+                        <option value="true">Yes</option>
                       </select>
-                  <!-- <label for="completed" class="form-label">Completed</label>
-                  <input type="text" class="form-control" id="completed" name="completed"> -->
                 </div>
                 <button type="submit" class="btn btn-primary">Create Project</button>
               </form>
@@ -40,9 +31,10 @@
       </div>
     </div>
   </div>
+  <!-- Modal end-->
     
-    <div id="projects"></div>
 </div>
+
 <div class="projects-table">
     <table class="table">
         <thead>
