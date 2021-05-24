@@ -1,21 +1,22 @@
 .mainView {
-    width: 40%;
+    width: 50%;
     margin: 0 auto;
     text-align: center;
 }
 
-img {
+#profile-pic {
     border-radius: 50%;
     width: 30%;
   }
 
   hr {
       border-color: black;
-      width: 80%
+      width: 100%
   }
 
-  button {
-      width: 30%;
+  #btn-profile {
+      width: 200px;
+      margin: 0 auto;
   }
 
 

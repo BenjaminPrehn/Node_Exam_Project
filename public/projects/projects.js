@@ -46,10 +46,10 @@ function deleteProjectById(id) {
 
 $(document).ready(function(){
 
-    $(".create-project-form").hide();
+    // $(".create-project-form").hide();
     
-    $("#toggle-form").click(function(){
-      $(".create-project-form").toggle();
-    });
+    // $("#toggle-form").click(function(){
+    //   $("#show-create-modal").toggle();
+    // });
 
   });

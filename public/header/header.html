@@ -7,10 +7,14 @@
     <title>Project Managment</title>
 
     <!-- Bootstrap  -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> 
 
+    <!--Font Awesome 5-->
     <script src="https://kit.fontawesome.com/b2e2fb1298.js" crossorigin="anonymous"></script>
+
+ 
     <!-- Custom CSS-->
+    <link rel="stylesheet" href="/../css/global.css">
     <link rel="stylesheet" href="/../profile/profile.css">
     <link rel="stylesheet" href="/../profileUpdate/profileUpdate.css">
     <link rel="stylesheet" href="/../projects/projects.css">
@@ -18,31 +22,34 @@
 </head>
 <body>
 <!--NAVBAR START-->
-    <div class="navbar navbar-inverse bg-primary">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
 
-                    <div class="navbar-header">
-                        <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                        <a href="/" class="navbar-brand">Project Managment</a>
-                    </div>
-
-                    <div class="navbar-collapse collapse" id="mobile_menu">
-                        <ul class="nav navbar-nav">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/projects">Projects</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/profile" ><span class="glyphicon glyphicon-user"></span><span id="profileName">Profile</span></a></li>
-                            <li><a href="" class="dropdown-toggle" data-toggle="dropdown" onClick="logout()" ><span class="glyphicon glyphicon-log-in"></span> Logout </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-md">
+      <a class="navbar-brand" href="/">Project Managment</a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/projects">Projects</a>
+            </li>
+          </ul>
+          <div class="d-flex">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile" ><span class="fas fa-user"></span><span id="profileName">Profile</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"href="" onClick="logout()" ><span class="fas fa-sign-out-alt"></span> Logout </a>
+                    </li>
+                </ul>
             </div>
-        </div>
+      </div>
     </div>
+  </nav>
 
 <!--NAVBAR END-->
+
+<div class="container-md">
 
