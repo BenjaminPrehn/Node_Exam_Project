@@ -8,10 +8,16 @@
 
             $.each(data, function(i, projects) {
 
-                $("<div>").appendTo("#projects")
-                    .append($("<h1></h1>").text(projects.description))
-                    .append($("<h3></h3>").text(projects.completed))
-                    .append($("<button type='button' class='btn btn-danger' onclick=\"deleteProjectById('"+ projects._id +"')\"> Delete </button>"))
+                $("#addData")
+                    .append(
+                        $("<tr> <td>" +
+                                projects.description 
+                            + "</td> <td>" + 
+                                projects.completed 
+                            + "</td> <td>" + 
+                                "<a href=''><span class='fas fa-edit'></span></a>" + 
+                                "<a onclick=\"deleteProjectById('"+ projects._id +"')\"><span class='fas fa-trash-alt'></span></a>"
+                        + "</td> </tr>"))
             });
         })
 
@@ -36,5 +42,14 @@ function deleteProjectById(id) {
         console.log(error);
     }
     
-
 }
+
+$(document).ready(function(){
+
+    $(".create-project-form").hide();
+    
+    $("#toggle-form").click(function(){
+      $(".create-project-form").toggle();
+    });
+
+  });

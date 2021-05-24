@@ -1,9 +1,30 @@
-<h1>This is projects</h1>
+<div class="projects">
+    
+    <button id="toggle-form">Create new project</button>
+    <form action="/projects" method="POST" class="create-project-form">
+        <input type="text" name="description" placeholder="Description" required>
+        <input type="text" name="completed" placeholder="Completed" >
+        <button type="submit" id="submit-form">Create project</button>
+    </form>
+    
+    <div id="projects"></div>
+</div>
+<div class="projects-table">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="addData">
 
-<div id="projects"></div>
+        </tbody>
+      </table>
+</div>
 
-<form action="/projects" method="POST">
-    <input type="text" name="description" placeholder="Description" required>
-    <input type="text" name="completed" placeholder="Completed" required>
-    <button type="submit">Create project</button>
-</form>
+
+
+
+

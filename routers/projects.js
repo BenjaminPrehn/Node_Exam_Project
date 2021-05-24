@@ -14,7 +14,7 @@ router.post("/projects", authentication, async (req, res) => {
 
     try {
         await projects.save();
-        res.status(201).send(projects);
+        res.status(201).redirect("/projects");
     } catch (error) {
         res.status(400).send(error);
     }
