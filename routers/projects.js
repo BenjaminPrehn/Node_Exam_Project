@@ -38,6 +38,21 @@ router.get("/projects/all", authentication, async (req, res) => {
         res.status(500).send(error);
         console.log(error);
     }
+});
+
+// Delete a single project
+router.delete("/projects/:id", authentication, async (req, res) => {
+    try {
+        const project = await Projects.findOneAndDelete({ _id: req.params.id, owner: req.user._id});
+
+        if(!project) {
+            return res.status(404).send();
+        }
+
+        res.send(project)
+    } catch (error) {
+        res.status(500).send(error);
+    }
 })
 
 module.exports = router;

@@ -30,13 +30,44 @@ router.post("/users/login", async (req, res) => {
         res.cookie("auth_token", token);
         res.redirect("/");
     } catch (error) {
-        res.status(400).send();
+            res.status(400).send("<h1> Wrong credentials </h1>");
     }
 });
 
 // Get user profile
 router.get("/users/me", authentication, (req, res) => {
     res.send(req.user);
+});
+
+// Update a user
+router.patch("/users/me", authentication, async (req, res) => {
+    const updates = Object.keys(req.body);
+    // const allowUpdatesOn = [req.body.firstname, req.body.lastname, req.body.email];
+    // const isValidOperation = updates.every((update) => allowUpdatesOn.includes(update));
+
+    // if(!isValidOperation) {
+    //     return res.status(404).send({error: 'Invalid updates'});
+    // }
+
+    try{
+        updates.forEach((update) => {
+            req.user[update] = req.body[update];
+        });
+
+        
+
+        // req.user.firstname = req.body.firstname;
+        // req.user.lastname = req.body.lastname;
+        // req.user.email = req.body.email;
+        // req.user.password = req.body.password;
+
+        await req.user.save();
+
+        res.send(req.user);
+     
+    } catch (error) {
+        res.status(400).send(error);
+    }
 });
 
 // Logout a user

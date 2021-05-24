@@ -1,3 +1,4 @@
+// Getting the user data 
 (async function getProfile() {
     try {
        await $.ajax({
@@ -17,6 +18,7 @@
 
 })();
 
+// Button function logout all users
 function logoutAll() {
     try {
         $.ajax({
@@ -34,6 +36,7 @@ function logoutAll() {
     }
 };
 
+// Delete the user
 function deleteUser() {
     try {
         $.ajax({
@@ -49,3 +52,11 @@ function deleteUser() {
         console.log(error);
     }
 };
+
+function updateUser() {
+    try {
+        window.location.href = "/profileUpdate";
+    } catch (error) {
+        console.log(error);
+    }
+}

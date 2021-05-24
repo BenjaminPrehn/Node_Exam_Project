@@ -23,6 +23,7 @@ const create = fs.readFileSync(__dirname + "/public/create.html", "utf-8");
 const home = fs.readFileSync(__dirname + "/public/home/home.html", "utf-8");
 const projects = fs.readFileSync(__dirname + "/public/projects/projects.html", "utf-8");
 const profile = fs.readFileSync(__dirname + "/public/profile/profile.html", "utf-8");
+const profileUpdate = fs.readFileSync(__dirname + "/public/profileUpdate/profileUpdate.html", "utf-8");
 const header = fs.readFileSync(__dirname + "/public/header/header.html", "utf-8");
 const footer = fs.readFileSync(__dirname + "/public/footer/footer.html", "utf-8");
 
@@ -44,6 +45,10 @@ app.get("/projects", authentication, (req, res) => {
 
 app.get("/profile", authentication, (req, res) => {
     res.send(header + profile + footer);
+});
+
+app.get("/profileUpdate", authentication, (req, res) => {
+    res.send(header + profileUpdate + footer);
 });
 
 app.listen(port, (error) => {
