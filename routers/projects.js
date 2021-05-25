@@ -40,6 +40,24 @@ router.get("/projects/all", authentication, async (req, res) => {
     }
 });
 
+// Update a project by its ID
+router.get("/projects/:id", authentication, async (req, res) => {
+    const _id = req.params.id;
+
+    try{
+        const project = await Projects.findOne({_id, owner: req.user._id});
+
+        if(!project) {
+            return res.status(404).send();
+        }
+
+        res.redirect("/projects");
+        
+    } catch (error) {
+        res.status(500).send();
+    }
+})
+
 // Delete a single project
 router.delete("/projects/:id", authentication, async (req, res) => {
     try {

@@ -9,7 +9,11 @@
             
             $("#name").text(user.firstname + " " + user.lastname);
             $("#email").text(user.email);
-                
+
+            $("#firstnameModal").val(user.firstname);
+            $("#lastnameModal").val(user.lastname);
+           // $("#emailModal").val(user.email);
+            
         });
 
     } catch (error) {
@@ -53,10 +57,25 @@ function deleteUser() {
     }
 };
 
-function updateUser() {
-    try {
-        window.location.href = "/profileUpdate";
-    } catch (error) {
-        console.log(error);
+// Check if password is the same
+function checkPassword(form) {
+    password1 = form.password1.value;
+    password2 = form.password2.value;
+          
+    // If Not same return False.    
+    if (password1 != password2) {
+        $("#passMismatch").removeAttr("hidden");
+        return false;
+    } else if (password2.length < 6){
+        $("#toShortPass").removeAttr("hidden");
+        return false;
+    } else{
+        $("#changedSuccess").removeAttr("hidden");
+
+        alert ("\nPassword was succesfully updated!")
+        
+        return true;
+
+        
     }
 }

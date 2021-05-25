@@ -40,9 +40,10 @@ router.get("/users/me", authentication, (req, res) => {
 });
 
 // Update a user
-router.patch("/users/me", authentication, async (req, res) => {
+router.post("/users/meUpdate", authentication, async (req, res) => {
     const updates = Object.keys(req.body);
-    // const allowUpdatesOn = [req.body.firstname, req.body.lastname, req.body.email];
+    
+    // const allowUpdatesOn = ["firstname", "lastname", "password"];
     // const isValidOperation = updates.every((update) => allowUpdatesOn.includes(update));
 
     // if(!isValidOperation) {
@@ -54,16 +55,9 @@ router.patch("/users/me", authentication, async (req, res) => {
             req.user[update] = req.body[update];
         });
 
-        
-
-        // req.user.firstname = req.body.firstname;
-        // req.user.lastname = req.body.lastname;
-        // req.user.email = req.body.email;
-        // req.user.password = req.body.password;
-
         await req.user.save();
 
-        res.send(req.user);
+        res.redirect("/profile");
      
     } catch (error) {
         res.status(400).send(error);

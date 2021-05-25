@@ -16,7 +16,7 @@
                                 projects.completed 
                             + "</td> <td>" + 
                                 "<a href=''><span class='fas fa-edit'></span></a>" + 
-                                "<a onclick=\"deleteProjectById('"+ projects._id +"')\"><span class='fas fa-trash-alt'></span></a>"
+                                "<a href='' onclick=\"deleteProjectById('"+ projects._id +"')\"><span class='fas fa-trash-alt'></span></a>"
                         + "</td> </tr>"))
             });
         })
@@ -42,14 +42,11 @@ function deleteProjectById(id) {
         console.log(error);
     }
     
-}
+};
+
+
 
 $(document).ready(function(){
 
-    // $(".create-project-form").hide();
-    
-    // $("#toggle-form").click(function(){
-    //   $("#show-create-modal").toggle();
-    // });
 
   });

@@ -4,9 +4,75 @@
     <h2 id="email"></h2>
     <hr>
         <div class="d-grid gap-2">
-            <button class="btn btn-success" id="btn-profile" onclick="updateUser()">Update profile</button>
+            <button type="button" class="btn btn-success" id="btn-profile" data-bs-toggle="modal" data-bs-target="#updateProfileModal">Update Profile</button>
+            <button type="button" class="btn btn-primary" id="btn-profile" data-bs-toggle="modal" data-bs-target="#updatePasswordModal">Update Password</button>
             <button class="btn btn-warning" id="btn-profile" onclick="logoutAll()">Logout all sessions</button>
             <button class="btn btn-danger" id="btn-profile" onclick="deleteUser()">Delete account</button>
         </div>
 </div>
+
+  <!-- Modal Update profile-->
+  <div class="modal fade" id="updateProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header d-block">
+          <h5 class="modal-title text-center" id="exampleModalLabel">Update Profile</h5>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body">
+            <form action="/users/meUpdate" method="POST">
+                <div class="mb-3">
+                  <label for="firstname" class="form-label">Firstname</label>
+                  <input type="text" class="form-control" id="firstnameModal" name="firstname" required>
+                </div>
+                <div class="mb-3">
+                    <label for="lastname" class="form-label">Firstname</label>
+                    <input type="text" class="form-control" id="lastnameModal" name="lastname" required>
+                </div>
+                <!-- <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="emailModal" name="email" required>
+                </div> -->
+                <button type="submit" class="btn btn-primary">Update profile</button>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Update profile end-->
+
+    <!-- Modal Update Password-->
+    <div class="modal fade" id="updatePasswordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header d-block">
+              <h5 class="modal-title text-center" id="exampleModalLabel">Update Password</h5>
+            </div>
+            <div class="modal-body">
+                <form onSubmit="return checkPassword(this)" action="/users/meUpdate" method="POST">
+                    <div class="alert alert-warning" id="passMismatch" role="alert" hidden>
+                        Password didn't match! Please try again...
+                      </div>
+                      <div class="alert alert-warning" id="toShortPass" role="alert" hidden>
+                        Password needs to be more than 6 chars
+                      </div>
+                      <div class="alert alert-success" id="changedSuccess" role="alert" hidden>
+                        Password updated! Redirecting.. 
+                      </div>
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="password1" name="password-check" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastname" class="form-label">Re-enter Password</label>
+                        <input type="password" class="form-control" id="password2" name="password" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Update Password</button>
+                  </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal end-->
 
