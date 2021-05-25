@@ -15,7 +15,7 @@
                             + "</td> <td>" + 
                                 projects.completed 
                             + "</td> <td>" + 
-                                "<a href=''><span class='fas fa-edit'></span></a>" + 
+                                "<a href='' onclick=\"getProjectById('"+ projects._id +"')\"><span class='fas fa-edit'></span></a>" + 
                                 "<a href='' onclick=\"deleteProjectById('"+ projects._id +"')\"><span class='fas fa-trash-alt'></span></a>"
                         + "</td> </tr>"))
             });
@@ -27,6 +27,26 @@
 
 })();
 
+// Get a project by it's id
+function getProjectById(id) {
+    try {
+            $.ajax({
+                method: "GET",
+                url: "/projects/" + id,
+                dataType: "json"
+            }).done(function (project) {
+                $("#descriptionModal").val(project.description)
+                $("#complatedModal").val(project.completed)
+            }
+                
+        );
+    } catch (error) {
+        alert("Error")
+        console.log(error);
+    }
+}
+
+// Delete a project by its ID 
 function deleteProjectById(id) {
     try {
         $.ajax({
