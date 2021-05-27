@@ -45,18 +45,19 @@ router.get("/projects/:id", authentication, async (req, res) => {
     const _id = req.params.id;
 
     try{
-        const project = await Projects.findOne({_id, owner: req.user._id});
-
+        const project = await Projects.findOne({_id: req.params.id, owner: req.user._id});
+        console.log(project);
         if(!project) {
             return res.status(404).send();
         }
 
-        res.redirect("/projects");
-        
+        res.send(project)
+
     } catch (error) {
-        res.status(500).send();
+        res.status(500).send(error);
+        console.log(error);
     }
-})
+});
 
 // Delete a single project
 router.delete("/projects/:id", authentication, async (req, res) => {

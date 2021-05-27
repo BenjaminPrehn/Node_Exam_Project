@@ -49,6 +49,35 @@
   </div>
   <!-- Modal Create Project end-->
 
+   <!-- Modal Update Project -->
+ <div class="modal fade" id="updateProjectModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header d-block">
+          <h5 class="modal-title text-center" id="exampleModalLabel">Update project</h5>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body">
+            <form action="/projects" method="POST">
+                <div class="mb-3">
+                  <label for="description" class="form-label">Description</label>
+                  <input type="text" class="form-control" id="descriptionUpdate" name="description" required>
+                </div>
+                <div class="mb-3">
+                    <label for="completed" class="form-label">Completed?</label>
+                    <select class="form-select" aria-label="completed" id="completedUpdate" name="completed">
+                        <option value="false">No</option>
+                        <option value="true">Yes</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Update project</button>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Create Project end-->
+
 
 
 

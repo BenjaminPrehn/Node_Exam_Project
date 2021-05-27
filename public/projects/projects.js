@@ -1,6 +1,6 @@
 (async function getProjects() {
     try {
-        $.ajax({
+       await $.ajax({
             method: "GET",
             url: "/projects/all",
             dataType: "json"
@@ -15,7 +15,7 @@
                             + "</td> <td>" + 
                                 projects.completed 
                             + "</td> <td>" + 
-                                "<a href='' onclick=\"getProjectById('"+ projects._id +"')\"><span class='fas fa-edit'></span></a>" + 
+                                "<a href='' onclick=\"getProjectById('"+ projects._id +"')\" data-bs-toggle='modal' data-bs-target='#updateProjectModal'><span class='fas fa-edit'></span></a>" + 
                                 "<a href='' onclick=\"deleteProjectById('"+ projects._id +"')\"><span class='fas fa-trash-alt'></span></a>"
                         + "</td> </tr>"))
             });
@@ -30,16 +30,19 @@
 // Get a project by it's id
 function getProjectById(id) {
     try {
-            $.ajax({
+           $.ajax({
                 method: "GET",
                 url: "/projects/" + id,
                 dataType: "json"
-            }).done(function (project) {
-                $("#descriptionModal").val(project.description)
-                $("#complatedModal").val(project.completed)
-            }
-                
-        );
+            }).done(
+                function(project) {
+                console.log(project.description);
+                $("#descriptionUpdate").val(project.description);
+                $("#completedUpdate").val(project.completed);
+            },
+            console.log("hello")
+            
+            );
     } catch (error) {
         alert("Error")
         console.log(error);
