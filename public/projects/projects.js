@@ -13,7 +13,7 @@
                         $("<tr> <td>" +
                                 projects.description 
                             + "</td> <td>" + 
-                                projects.completed 
+                                projects.status
                             + "</td> <td>" + 
                                 "<a href='' onclick=\"getProjectById('"+ projects._id +"')\" data-bs-toggle='modal' data-bs-target='#updateProjectModal'><span class='fas fa-edit'></span></a>" + 
                                 "<a href='' onclick=\"deleteProjectById('"+ projects._id +"')\"><span class='fas fa-trash-alt'></span></a>"
@@ -38,14 +38,28 @@ function getProjectById(id) {
                 function(project) {
                 console.log(project.description);
                 $("#descriptionUpdate").val(project.description);
-                $("#completedUpdate").val(project.completed);
-            },
-            console.log("hello")
+                $("#statusUpdate").val(project.status);
+
+                $("#updateForm").attr("action", "/projects/" + project._id);
+            }
             
-            );
+        );
     } catch (error) {
         alert("Error")
         console.log(error);
+    }
+}
+
+function updateProjectById(id) {
+    try {
+        $.ajax({
+            method: "POST",
+            url: "/projects/" + id,
+            dataType: "json"
+        }).done()
+            location.reload()
+        } catch (error) {
+            console.log(error);
     }
 }
 

@@ -7,8 +7,8 @@ const projectsSchema = new mongoose.Schema({
         required: true,
         trim: true
     }, 
-    completed: {
-        type: Boolean,
+    status: {
+        type: String,
         default: false
     },
     owner: {

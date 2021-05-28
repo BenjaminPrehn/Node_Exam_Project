@@ -40,7 +40,7 @@ router.get("/projects/all", authentication, async (req, res) => {
     }
 });
 
-// Update a project by its ID
+// Get a project by its ID
 router.get("/projects/:id", authentication, async (req, res) => {
     const _id = req.params.id;
 
@@ -56,6 +56,31 @@ router.get("/projects/:id", authentication, async (req, res) => {
     } catch (error) {
         res.status(500).send(error);
         console.log(error);
+    }
+});
+
+//Update project by ID
+
+router.post("/projects/:id", authentication, async (req, res) => {
+    const updates = Object.keys(req.body);
+
+    try{
+        const project = await Projects.findOne({_id: req.params.id, owner: req.user._id});
+
+        if(!project) {
+            return res.status(404).send();
+        }
+
+        updates.forEach((update) => {
+            project[update] = req.body[update];
+        });
+
+        await project.save();
+
+        res.redirect("/projects");
+
+    } catch (error) {
+        res.status(400).send(error);
     }
 });
 

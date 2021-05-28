@@ -35,10 +35,11 @@
                   <input type="text" class="form-control" id="description" name="description" required>
                 </div>
                 <div class="mb-3">
-                    <label for="completed" class="form-label">Completed?</label>
-                    <select class="form-select" aria-label="completed" name="completed">
-                        <option selected value="false">No</option>
-                        <option value="true">Yes</option>
+                    <label for="status" class="form-label">Status?</label>
+                    <select class="form-select" aria-label="status" name="status">
+                        <option selected value="Not started">Not Started</option>
+                        <option value="Ongoing">Ongoing</option>
+                        <option value="Done">Done</option>
                       </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Create Project</button>
@@ -58,16 +59,17 @@
           <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
         </div>
         <div class="modal-body">
-            <form action="/projects" method="POST">
+            <form id="updateForm" action="" method="POST">
                 <div class="mb-3">
                   <label for="description" class="form-label">Description</label>
                   <input type="text" class="form-control" id="descriptionUpdate" name="description" required>
                 </div>
                 <div class="mb-3">
-                    <label for="completed" class="form-label">Completed?</label>
-                    <select class="form-select" aria-label="completed" id="completedUpdate" name="completed">
-                        <option value="false">No</option>
-                        <option value="true">Yes</option>
+                    <label for="status" class="form-label">Status?</label>
+                    <select class="form-select" aria-label="status" id="statusUpdate" name="status">
+                        <option value="Not started">Not Started</option>
+                        <option value="Ongoing">Ongoing</option>
+                        <option value="Done">Done</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Update project</button>
