@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 // Mongo Schema
 const userSchema = new mongoose.Schema({
@@ -65,7 +66,7 @@ userSchema.methods.toJSON = function () {
 // Generate a Token for each user session and save to mongoDB
 userSchema.methods.generateAuthToken = async function () {
     const user = this;
-    const token = jwt.sign({ _id: user._id.toString() }, "examprojecttoken");
+    const token = jwt.sign({ _id: user._id.toString() }, process.env.TOKEN_SECRET);
 
     user.tokens = user.tokens.concat({ token: token});
     await user.save();

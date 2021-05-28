@@ -1,1 +1,5 @@
-Note: Connection string in mongoose.js --> make it env for production
+Create a .env with: 
+PORT=
+DB_URL=
+TOKEN_SECRET=
+

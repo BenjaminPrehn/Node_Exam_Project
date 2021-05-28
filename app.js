@@ -3,12 +3,13 @@ const fs = require('fs');
 const cookieParser = require('cookie-parser');
 const authentication = require('./middelware/authentication.js');
 require('./database/mongoose');
+require('dotenv').config();
 
 const userRouter = require('./routers/user');
 const projectsRouter = require('./routers/projects');
 
 const app = express(); 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT;
 
 app.use(express.static(__dirname + "/public"));
 app.use(express.json());
