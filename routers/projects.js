@@ -14,7 +14,7 @@ router.post("/projects", authentication, async (req, res) => {
 
     try {
         await projects.save();
-        res.status(201).redirect("/projects");
+        res.status(201).redirect("/");
     } catch (error) {
         res.status(400).send(error);
     }
@@ -77,7 +77,7 @@ router.post("/projects/:id", authentication, async (req, res) => {
 
         await project.save();
 
-        res.redirect("/projects");
+        res.redirect("/");
 
     } catch (error) {
         res.status(400).send(error);
