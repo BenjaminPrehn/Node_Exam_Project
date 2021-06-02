@@ -1,6 +1,6 @@
 (async function getProfile() {
     try {
-        await $.ajax({
+        $.ajax({
             method: "GET",
             url: '/users/me',
             dataType: 'json'
@@ -9,7 +9,6 @@
         });
 
     } catch (error) {
-        alert("Error occured when login out - Please try again");
         console.log(error);
     }
 
@@ -22,12 +21,13 @@ function logout() {
             url: "/users/logout",
             dataType: "json"
         }).done(
-            location.reload()
+            
         );
 
     } catch (error) {
-        alert("Error occured when login out - Please try again");
         console.log(error);
+        alert(error);
+        
     }
 }
 

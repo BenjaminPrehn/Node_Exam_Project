@@ -1,7 +1,6 @@
 const express = require('express');
 const router = new express.Router();
 const authentication = require('../middelware/authentication.js');
-
 const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }));
 
@@ -27,7 +26,7 @@ router.post("/users/login", async (req, res) => {
     try {
         const user = await User.findByCredentials(req.body.email, req.body.password);
         const token = await user.generateAuthToken();
-        res.cookie("auth_token", token);
+        res.cookie("auth_token", token, { maxAge: 900000 });
         res.redirect("/");
     } catch (error) {
             res.status(400).send("<h1> Wrong credentials </h1>");
@@ -42,13 +41,6 @@ router.get("/users/me", authentication, (req, res) => {
 // Update a user
 router.post("/users/meUpdate", authentication, async (req, res) => {
     const updates = Object.keys(req.body);
-    
-    // const allowUpdatesOn = ["firstname", "lastname", "password"];
-    // const isValidOperation = updates.every((update) => allowUpdatesOn.includes(update));
-
-    // if(!isValidOperation) {
-    //     return res.status(404).send({error: 'Invalid updates'});
-    // }
 
     try{
         updates.forEach((update) => {
@@ -73,10 +65,12 @@ router.post("/users/logout", authentication, async (req, res) => {
 
         await req.user.save();
 
-        res.clearCookie("auth_token");
-        res.redirect("/login");
+        // res.clearCookie("auth_token");
+
+        res.clearCookie("auth_token").redirect("/login");
 
     } catch (error) {
+        console.log(error);
         res.status(500).send();
     }
 });
@@ -94,13 +88,12 @@ router.post("/users/logoutAllSessions", authentication, async (req, res) => {
     
 });
 
-// Delete an account from the database - !!! NOTE redirect not working - but rest is working
+// Delete an account from the database
 router.delete("/users/me", authentication, async (req, res) => {
     try {
         await req.user.remove();
 
-        res.clearCookie("auth_token");
-        res.send("/login");
+        res.clearCookie("auth_token").send("/login");
 
     } catch (e) {
         res.status(500).send();

@@ -1,7 +1,7 @@
 // Getting the user data 
 (async function getProfile() {
     try {
-       await $.ajax({
+       $.ajax({
             method: "GET",
             url: "/users/me",
             dataType: "json"
@@ -30,9 +30,8 @@ function logoutAll() {
             url: "/users/logoutAllSessions",
             dataType: "json"
         }).done(
-            location.reload()
+            
         );
-
         
     } catch (error) {
         alert("Error occured when login out - Please try again");
@@ -48,7 +47,7 @@ function deleteUser() {
             url: "/users/me",
             dataType: "json"
         }).done(
-            location.reload()
+            
         );
 
     } catch (error) {

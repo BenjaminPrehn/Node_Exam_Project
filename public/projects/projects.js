@@ -1,6 +1,6 @@
 (async function getProjects() {
     try {
-       await $.ajax({
+       $.ajax({
             method: "GET",
             url: "/projects/all",
             dataType: "json"
