@@ -7,12 +7,18 @@
             dataType: "json"
         }).done(function(user) {
             
+            // Adding name to header
+            $("#profileName").text(" " + user.firstname + " " + user.lastname);
+
+            // Adding profile info for profile page
             $("#name").text(user.firstname + " " + user.lastname);
             $("#email").text(user.email);
 
+            // Adding profile info for profile Modal
             $("#firstnameModal").val(user.firstname);
             $("#lastnameModal").val(user.lastname);
-           // $("#emailModal").val(user.email);
+
+            $("#room-username").val(user.firstname + " " + user.lastname)
             
         });
 

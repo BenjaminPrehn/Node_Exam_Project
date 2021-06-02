@@ -50,6 +50,7 @@ function getProjectById(id) {
     }
 }
 
+// Update a project by it's id
 function updateProjectById(id) {
     try {
         $.ajax({
@@ -80,10 +81,3 @@ function deleteProjectById(id) {
     }
     
 };
-
-
-
-$(document).ready(function(){
-
-
-  });

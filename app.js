@@ -99,7 +99,7 @@ app.get("/room", authentication, (req, res) => {
 });
 
 app.get("/chat", authentication, (req, res) => {
-    res.send(header + chat + footer);
+    res.send(chat);
 });
 
 app.get("/profile", authentication, (req, res) => {

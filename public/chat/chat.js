@@ -25,6 +25,10 @@ socket.on("message", message => {
     console.log(message);
     outPutMessage(message);
 
+    if (message.username === "Chat-Bot") {
+        document.querySelector(".message").style.backgroundColor = "#99C262";
+    }
+
     //Scroll down
     chatMessages.scrollTop = chatMessages.scrollHeight;
 });
@@ -49,7 +53,7 @@ chatForm.addEventListener("submit", (e) => {
 function outPutMessage(message) {
     const div = document.createElement("div");
     div.classList.add("message");
-    div.innerHTML = `<p class="meta">${message.username} <span>${message.time}</span></p>
+    div.innerHTML = `<p class="meta">${message.username} <span class="time-right">${message.time}</span></p>
     <p class="text">
         ${message.text}
     </p>`;
@@ -65,6 +69,6 @@ function outputRoomName(room) {
 // Add users to DOM
 function outputUsers(users) {
     userList.innerHTML = `
-    ${users.map(user => `<li>${user.username} </li>`).join('')}
+    ${users.map(user => `<p>${user.username} </p>`).join('')}
     `
 }

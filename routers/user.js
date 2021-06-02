@@ -29,7 +29,7 @@ router.post("/users/login", async (req, res) => {
         res.cookie("auth_token", token, { maxAge: 900000 });
         res.redirect("/");
     } catch (error) {
-            res.status(400).send("<h1> Wrong credentials </h1>");
+        res.status(400).send("<h1> Wrong credentials </h1>");
     }
 });
 
