@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const Projects = require('./project');
 require('dotenv').config();
 
 // Mongo Schema
@@ -86,6 +87,15 @@ userSchema.pre("save", async function (next) {
 
     next();
 });
+
+// Delete all tasks when a user is deleted
+userSchema.pre("remove", async function (next) {
+    const user = this;
+
+    await Projects.deleteMany({ owner: user._id });
+
+    next();
+})
 
 // STATICS
 

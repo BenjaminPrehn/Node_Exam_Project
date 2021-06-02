@@ -26,10 +26,11 @@ router.post("/users/login", async (req, res) => {
     try {
         const user = await User.findByCredentials(req.body.email, req.body.password);
         const token = await user.generateAuthToken();
-        res.cookie("auth_token", token, { maxAge: 900000 });
+        res.cookie("auth_token", token, { maxAge: 21600000 });
         res.redirect("/");
     } catch (error) {
-        res.status(400).send("<h1> Wrong credentials </h1>");
+        res.status(400).send(`<h1> Wrong Credentials</h1> <a href='/login'><h2> Try again please </h2></a> <p> ${error} </p>`);
+        
     }
 });
 
