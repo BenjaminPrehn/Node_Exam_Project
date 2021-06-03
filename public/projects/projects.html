@@ -9,8 +9,10 @@
     <table class="table">
         <thead>
           <tr>
-            <th scope="col">Description</th>
+            <th scope="col">Title</th>
             <th scope="col">Status</th>
+            <th scope="col">Added</th>
+            <th scope="col">Last Update</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -19,6 +21,26 @@
         </tbody>
       </table>
 </div>
+
+  <!-- Modal View Project -->
+  <div class="modal fade" id="viewProjectModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header d-block">
+          <h5 class="modal-title text-center" id="title"></h5>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body">
+            <p id="p-bold">Description:</p>
+            <p id="description"></p>
+            <p id="p-bold">Current Status:</p>
+            <p id="status"></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal View Project end-->
 
  <!-- Modal Create Project -->
  <div class="modal fade" id="createProjectModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -30,6 +52,10 @@
         </div>
         <div class="modal-body">
             <form action="/projects" method="POST">
+              <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+              </div>
                 <div class="mb-3">
                   <label for="description" class="form-label">Description</label>
                   <input type="text" class="form-control" id="description" name="description" required>
@@ -60,6 +86,10 @@
         </div>
         <div class="modal-body">
             <form id="updateForm" action="" method="POST">
+              <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="titleUpdate" name="title" required>
+              </div>
                 <div class="mb-3">
                   <label for="description" class="form-label">Description</label>
                   <input type="text" class="form-control" id="descriptionUpdate" name="description" required>
@@ -78,7 +108,7 @@
       </div>
     </div>
   </div>
-  <!-- Modal Create Project end-->
+  <!-- Modal Update Project end-->
 
 
 

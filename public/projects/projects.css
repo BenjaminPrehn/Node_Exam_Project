@@ -16,3 +16,11 @@ span {
     margin: 4px;
 }
 
+#viewProjectModal {
+    text-align: center;
+}
+
+#p-bold {
+    font-weight: bold;
+}
+
